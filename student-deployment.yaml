@@ -1,0 +1,23 @@
+apiVersion: apps/v1 #version of the Kubernetes API you're using to create this object
+kind: Deployment  #What kind of object you want to create
+metadata: #Data that helps uniquely identify the object
+   name: student
+
+spec: #What state you desire for the object
+  selector:
+    matchLabels:
+      app: student
+
+
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: student
+    spec:   #What state you desire for the object
+
+      containers:
+      - name: student #container name
+        image: charantejaswi/sms:v1
+        ports:
+        - containerPort: 8787 # student runs on port 8787
